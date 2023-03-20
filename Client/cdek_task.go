@@ -134,8 +134,8 @@ func (c *Client) Calculate(addrFrom string, addrTo string, size resF.Packages) (
 	if err != nil {
 		return nil, err
 	}
-	url := c.URL + "/calculator/tarifflist"
-	req, err := http.NewRequest("POST", url, bytes.NewBuffer(requestDataBytes))
+	urlT := c.URL + "/calculator/tarifflist"
+	req, err := http.NewRequest("POST", urlT, bytes.NewBuffer(requestDataBytes))
 	if err != nil {
 		return nil, err
 	}
