@@ -1,6 +1,6 @@
 package ResponseFolder
 
-type cities struct {
+type Cities struct {
 	Code        int    `json:"code,omitempty"`
 	PostalCode  string `json:"postal_code,omitempty"`
 	CountryCode string `json:"country_code,omitempty"`
@@ -8,15 +8,15 @@ type cities struct {
 	Address     string `json:"address"`
 }
 
-type fromCity struct {
-	cities
+type FromCity struct {
+	Cities
 }
 
-type toCity struct {
-	cities
+type ToCity struct {
+	Cities
 }
 
-type packages struct {
+type Packages struct {
 	Weight int `json:"weight"`
 	Length int `json:"length,omitempty"`
 	Width  int `json:"width,omitempty"`

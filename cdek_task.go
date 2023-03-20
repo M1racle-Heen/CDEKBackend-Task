@@ -1,15 +1,20 @@
-package cdekCostCalculator
+package CdekCostCalculator
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
+	reqF "github.com/M1racle-Heen/CDEKBackend-Task/tree/TestBranch/RequestFolder"
+	resF "github.com/M1racle-Heen/CDEKBackend-Task/tree/TestBranch/ResponseFolder"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
-// Client represents the client credentials and API URL needed for authentication.
 type Client struct {
 	Account string `json:"client_id"`
 	Secret  string `json:"client_secret"`
@@ -88,4 +93,82 @@ func (c *Client) getAuthToken() error {
 
 	c.Token = tokenData.AccessToken
 	return nil
+}
+
+func (c *Client) Calculate(addrFrom string, addrTo string, size resF.Packages) ([]reqF.TariffRequest, error) {
+	myTime := time.Now().UTC().Format("2006-01-02T15:04:05-0700")
+	var requestData = resF.RequestData{
+		Date:     myTime,
+		Lang:     "rus",
+		Type:     1,
+		Currency: 1,
+		FromCity: resF.FromCity{
+			Cities: resF.Cities{
+				Address: addrFrom,
+				Code:    270,
+			},
+		},
+		ToCity: resF.ToCity{
+			Cities: resF.Cities{
+				Address: addrFrom,
+				Code:    270,
+			},
+		},
+		Packages: []resF.Packages{
+			{
+				Weight: size.Weight,
+				Length: size.Length,
+				Width:  size.Width,
+				Height: size.Height,
+			},
+		},
+	}
+
+	requestDataBytes, err := json.Marshal(requestData)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", "https://api.edu.cdek.ru/v2/calculator/tarifflist", bytes.NewBuffer(requestDataBytes))
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Authorization", "Bearer "+c.Token)
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+
+	if err != nil {
+		return nil, err
+	}
+
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+
+		}
+	}(resp.Body)
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("CDEK API returned non-OK status code %d", resp.StatusCode)
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+
+	if err != nil {
+		return nil, err
+	}
+	fmt.Println(string(body))
+
+	prices := reqF.TariffRequest{}
+	err = json.Unmarshal(body, &prices)
+	fmt.Println(prices)
+	if err != nil {
+		//fmt.Println(err)
+		return nil, err
+	}
+	k := []reqF.TariffRequest{prices}
+	return k, nil
 }
