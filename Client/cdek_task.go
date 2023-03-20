@@ -25,13 +25,17 @@ type Client struct {
 }
 
 // NewClient creates a new instance of the Client struct and returns a pointer to it and error while getting Auth Token.
-func NewClient(account string, securePassword string, apiURL string) (*Client, error) {
+func NewClient(account string, securePassword string, TestMode bool) (*Client, error) {
 	c := &Client{
 		Account: account,
 		Secret:  securePassword,
-		URL:     apiURL,
 	}
 
+	if TestMode == true {
+		c.URL = "https://api.edu.cdek.ru/v2"
+	} else {
+		c.URL = "https://api.cdek.ru/v2"
+	}
 	// get Auth token
 	err := c.getAuthToken()
 	if err != nil {
@@ -130,8 +134,8 @@ func (c *Client) Calculate(addrFrom string, addrTo string, size resF.Packages) (
 	if err != nil {
 		return nil, err
 	}
-
-	req, err := http.NewRequest("POST", "https://api.edu.cdek.ru/v2/calculator/tarifflist", bytes.NewBuffer(requestDataBytes))
+	url := c.URL + "/calculator/tarifflist"
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(requestDataBytes))
 	if err != nil {
 		return nil, err
 	}

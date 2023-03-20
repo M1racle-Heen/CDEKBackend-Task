@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	cdek, err := Client.NewClient("EMscd6r9JnFiQ3bLoyjJY6eM78JrJceI", "PjLZkKBHEiLK3YsjtNrt3TGNG0ahs3kG", "https://api.edu.cdek.ru/v2")
+	cdek, err := Client.NewClient("EMscd6r9JnFiQ3bLoyjJY6eM78JrJceI", "PjLZkKBHEiLK3YsjtNrt3TGNG0ahs3kG", true)
 
 	if err != nil {
 		fmt.Println(err)
