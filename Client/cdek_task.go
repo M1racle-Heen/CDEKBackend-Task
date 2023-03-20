@@ -112,8 +112,8 @@ func (c *Client) Calculate(addrFrom string, addrTo string, size resF.Packages) (
 		},
 		ToCity: resF.ToCity{
 			Cities: resF.Cities{
-				Address: addrFrom,
-				Code:    270,
+				Address: addrTo,
+				Code:    44,
 			},
 		},
 		Packages: []resF.Packages{
