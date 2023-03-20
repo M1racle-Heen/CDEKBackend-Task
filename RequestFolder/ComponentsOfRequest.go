@@ -1,11 +1,11 @@
 package RequestFolder
 
-type TariffErrors []struct {
+type tariffErrors []struct {
 	Code    string `json:"code"`
 	Message string `json:"message"`
 }
 
-type TariffCodes []struct {
+type tariffCodes []struct {
 	TariffCode        int     `json:"tariff_code"`
 	TariffName        string  `json:"tariff_name"`
 	TariffDescription string  `json:"tariff_description"`
