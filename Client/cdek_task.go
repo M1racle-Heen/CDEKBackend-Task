@@ -1,4 +1,4 @@
-package CdekCostCalculator
+package Client
 
 import (
 	"bytes"
