@@ -168,6 +168,19 @@ func (c *Client) Calculate(addrFrom string, addrTo string, size resF.Packages) (
 	if err != nil {
 		return nil, err
 	}
-	k := []reqF.TariffRequest{prices}
+	var k []reqF.TariffRequest
+	for _, j := range prices.TariffErrors {
+		k = append(k, reqF.TariffRequest{
+			TariffCodes:  prices.TariffCodes,
+			TariffErrors: []reqF.TariffErrors{j},
+		})
+	}
+	for _, j := range prices.TariffCodes {
+		k = append(k, reqF.TariffRequest{
+			TariffCodes:  []reqF.TariffCodes{j},
+			TariffErrors: prices.TariffErrors,
+		})
+	}
+
 	return k, nil
 }

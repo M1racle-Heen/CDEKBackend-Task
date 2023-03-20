@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b49aff67-5d44-43bd-839c-ad5fa5c5661b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/cdek_task.go" beforeDir="false" afterPath="$PROJECT_DIR$/Client/cdek_task.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RequestFolder/ComponentsOfRequest.go" beforeDir="false" afterPath="$PROJECT_DIR$/RequestFolder/ComponentsOfRequest.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RequestFolder/Request.go" beforeDir="false" afterPath="$PROJECT_DIR$/RequestFolder/Request.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +66,15 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="go build github.com/M1racle-Heen/CDEKBackend-Task" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="CDEKBackend-Task" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/M1racle-Heen/CDEKBackend-Task" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
       <module name="CDEKBackend-Task" />
       <working_directory value="$PROJECT_DIR$" />
@@ -73,6 +85,11 @@
       <framework value="gotest" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build github.com/M1racle-Heen/CDEKBackend-Task" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">

@@ -5,7 +5,7 @@ type TariffErrors []struct {
 	Message string `json:"message"`
 }
 
-type TariffCodes []struct {
+type TariffCodes struct {
 	TariffCode        int     `json:"tariff_code"`
 	TariffName        string  `json:"tariff_name"`
 	TariffDescription string  `json:"tariff_description"`
