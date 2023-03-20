@@ -160,11 +160,9 @@ func (c *Client) Calculate(addrFrom string, addrTo string, size resF.Packages) (
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println(string(body))
 
 	prices := reqF.TariffRequest{}
 	err = json.Unmarshal(body, &prices)
-	fmt.Println(prices)
 	if err != nil {
 		//fmt.Println(err)
 		return nil, err
