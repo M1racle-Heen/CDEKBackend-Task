@@ -1,6 +1,6 @@
 # CDEKBackend-Task
 This is library for CDEK
-in main.go file you can find using of this library
+in main.go file you can find out one of the options to use this library
 
 How to get start:
   1. go get github.com/M1racle-Heen/CDEKBackend-Task/
