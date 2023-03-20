@@ -97,7 +97,7 @@ func (c *Client) getAuthToken() error {
 	return nil
 }
 
-func (c *Client) Calculate(addrFrom string, addrTo string, size resF.Packages) ([]reqF.TariffRequest, error) {
+func (c *Client) Calculate(addrFrom string, addrTo string, size resF.Packages) (*[]reqF.TariffRequest, error) {
 	myTime := time.Now().UTC().Format("2006-01-02T15:04:05-0700")
 	var requestData = resF.RequestData{
 		Date:     myTime,
@@ -170,5 +170,5 @@ func (c *Client) Calculate(addrFrom string, addrTo string, size resF.Packages) (
 		return nil, err
 	}
 	k := []reqF.TariffRequest{prices}
-	return k, nil
+	return &k, nil
 }
