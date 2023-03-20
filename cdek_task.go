@@ -4,10 +4,15 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+<<<<<<< Updated upstream
 
 	reqF "github.com/M1racle-Heen/CDEKBackend-Task/RequestFolder"
 	resF "github.com/M1racle-Heen/CDEKBackend-Task/ResponseFolder"
 
+=======
+	reqF "github.com/M1racle-Heen/CDEKBackend-Task/RequestFolder"
+	resF "github.com/M1racle-Heen/CDEKBackend-Task/ResponseFolder"
+>>>>>>> Stashed changes
 	"io"
 	"io/ioutil"
 	"log"
