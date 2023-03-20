@@ -4,8 +4,10 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	reqF "github.com/M1racle-Heen/CDEKBackend-Task/tree/TestBranch/RequestFolder"
-	resF "github.com/M1racle-Heen/CDEKBackend-Task/tree/TestBranch/ResponseFolder"
+
+	reqF "github.com/M1racle-Heen/CDEKBackend-Task/RequestFolder"
+	resF "github.com/M1racle-Heen/CDEKBackend-Task/ResponseFolder"
+
 	"io"
 	"io/ioutil"
 	"log"
@@ -160,13 +162,11 @@ func (c *Client) Calculate(addrFrom string, addrTo string, size resF.Packages) (
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println(string(body))
 
 	prices := reqF.TariffRequest{}
 	err = json.Unmarshal(body, &prices)
-	fmt.Println(prices)
 	if err != nil {
-		//fmt.Println(err)
+
 		return nil, err
 	}
 	k := []reqF.TariffRequest{prices}
