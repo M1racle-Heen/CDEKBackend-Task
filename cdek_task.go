@@ -164,7 +164,6 @@ func (c *Client) Calculate(addrFrom string, addrTo string, size resF.Packages) (
 	prices := reqF.TariffRequest{}
 	err = json.Unmarshal(body, &prices)
 	if err != nil {
-		//fmt.Println(err)
 		return nil, err
 	}
 	k := []reqF.TariffRequest{prices}
